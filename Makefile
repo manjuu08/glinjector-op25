@@ -8,7 +8,7 @@ PKG_MAINTAINER:=VMatrices <vmatrices@outlook.com>
 
 PKG_BUILD_DIR:= $(BUILD_DIR)/$(PKG_NAME)
 PKG_CACHE_DIR:= /tmp/.pkg/$(PKG_NAME)
-NPM_REGISTER:=https://r.cnpmjs.org
+NPM_REGISTER:=https://registry.npmmirror.com
 GL_SDK_PREFIX:=gl-sdk4-ui
 
 include $(INCLUDE_DIR)/package.mk
@@ -37,7 +37,7 @@ define Build/Prepare
 
 	@if ! diff -wB ./views/package.json $(PKG_CACHE_DIR)/package.json > /dev/null; then \
 		cp ./views/package.json $(PKG_CACHE_DIR); \
-		if ! npm --registr $(NPM_REGISTER) --prefix $(PKG_CACHE_DIR) install --force; then \
+		if ! npm --registry $(NPM_REGISTER) --prefix $(PKG_CACHE_DIR) install --force; then \
 			rm -f $(PKG_CACHE_DIR)/package.json;  \
 			exit 1; \
 		fi \

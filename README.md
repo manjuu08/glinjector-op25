@@ -1,6 +1,23 @@
-# GlInjector
+# GlInjector (OpenWrt 25 / apk 版)
 
 GL-iNet 路由器UI增强插件。提供登录页美化、快捷按钮、自定义背景、风扇控制等功能。
+
+> 本仓库 fork 自 [VMatrices/glinjector](https://github.com/VMatrices/glinjector)，增加了对 OpenWrt 25（apk 包管理器）固件的安装支持。插件功能本身未修改，版权归原作者所有。
+
+## OpenWrt 25 (apk) 安装
+
+原插件只提供 opkg 用的 ipk。在使用 apk 的 GL 固件上，可用 `apk/glinjector-apk.sh` 在路由器上把 ipk 转成 apk 并安装：
+
+1. 从 [原作者 Releases](https://github.com/VMatrices/glinjector/releases) 下载 ipk，连同 `apk/glinjector-apk.sh` 一起上传到路由器 `/tmp/`
+2. SSH 登录路由器执行：
+   ```sh
+   sh /tmp/glinjector-apk.sh
+   ```
+3. 进入 **系统 → 个性化** 点击 **应用**
+
+卸载：`apk del glinjector`（若 apk 不支持 `mkpkg`，脚本会直接安装文件，卸载用 `glinjector-uninstall`）。
+
+> 仅适用于 GL.iNet 官方固件（依赖 oui-httpd），原版 OpenWrt 无效。
 
 > 原帖镜像：[forum.gl-inet.cn/forum.php?mod=viewthread&tid=3129](https://web.archive.org/web/20260120184234/https://forum.gl-inet.cn/forum.php?mod=viewthread&tid=3129&extra=page%3D1)（中文论坛已关闭）
 
